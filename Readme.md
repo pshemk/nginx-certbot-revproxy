@@ -28,7 +28,12 @@ $ docker inspect -f '{{ .NetworkSettings.IPAddress }}' my_backend
 Start the nginx-certbot-revproxy container:
 
 ```bash
-$ docker run --name nginx-certbot-revproxy -e DOMAIN={YOUR_DOMAIN} -e EMAIL={YOUR_EMAIL} -e BACKEND={BACKEND_IP}:{BACKEND_PORT} -p 80:80 -p 443:443 pshemk/nginx-letsencrypt-revproxy:latest
+$ docker run --name nginx-certbot-revproxy \
+    -e DOMAIN={YOUR_DOMAIN} \
+    -e EMAIL={YOUR_EMAIL} \
+    -e BACKEND={BACKEND_IP}:{BACKEND_PORT} \
+    -p 80:80 \
+    -p 443:443 pshemk/nginx-letsencrypt-revproxy:latest
 ```
 
 Please note that with no persistent storage the image will regenerate the DH parameters for TLS every time, which can take a long time.
@@ -38,7 +43,14 @@ Please note that with no persistent storage the image will regenerate the DH par
 It's suggested to mount a volume inside the container to store the letsencrypt certificate and the DH parameters:
 
 ```bash
-$ docker run --name nginx-certbot-revproxy -e DOMAIN={YOUR_DOMAIN} -e EMAIL={YOUR_EMAIL} -e BACKEND={BACKEND_IP}:{BACKEND_PORT} -p 80:80 -p 443:443 -v /var/nginx-letsencrypt-revproxy:/etc/letsencrypt/ pshemk/nginx-letsencrypt-revproxy:latest
+$ docker run --name nginx-certbot-revproxy \
+    -e DOMAIN={YOUR_DOMAIN} \
+    -e EMAIL={YOUR_EMAIL} \
+    -e BACKEND={BACKEND_IP}:{BACKEND_PORT} \
+    -p 80:80 \
+    -p 443:443 \
+    -v /var/nginx-letsencrypt-revproxy:/etc/letsencrypt/ \
+    pshemk/nginx-letsencrypt-revproxy:latest
 
 ```
 
