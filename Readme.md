@@ -74,6 +74,10 @@ If after starting your backend and nginx-certbot-revproxy you see the following 
 ```
 then most likely your backend settings are misconfigured. 
 
+# Potential issues
+
+If the backend application has ability to do SSL/TLS termination it has to be reconfigured to not enable that functionality. The proxy passes a number of headers that should be sufficient to allow the backend to identify that traffic is in fact SSL/TLS protected. 
+
 # Container start process
 
 When started for the first time this is the typical output of the container:
