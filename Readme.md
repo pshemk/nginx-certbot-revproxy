@@ -6,7 +6,7 @@ This image provides an easy way to add Let's Encrypt certificate protection to a
 
 It works by running nginx inside the container (for TLS termination) and locally answering all Let's Encrypt related requests. All other requests are proxied to the backend. A renewal process runs in the the background, trying to renew the certificate every 2 weeks (but also on every container start).
 
-![schema](./docs/nginx-certbot-revproxy.png)
+![schema](https://github.com/pshemk/nginx-certbot-revproxy/raw/master/docs/nginx-certbot-revproxy.png)
 
 # How to use this image
 
