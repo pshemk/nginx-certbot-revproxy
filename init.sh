@@ -4,19 +4,22 @@
 if [ "${DOMAIN}x" == "x" ];
 then
     echo "DOMAIN not set, can't continue";
-    exit 1
+    kill -SIGTERM 1
+    exit
 fi
 
 if [ "${EMAIL}x" == "x" ];
 then
     echo "EMAIL not set, can't continue";
-    exit 1
+    kill -SIGTERM 1
+    exit
 fi
 
 if [ "${BACKEND}x" == "x" ];
 then
     echo "BACKEND not set, can't continue";
-    exit 1
+    kill -SIGTERM 1
+    exit
 fi
 
 if [ "${STAGING}x" == "x" ];
@@ -101,7 +104,8 @@ then
     echo " no, can't continue"
     echo $CHECK_RESULT
     sleep 1
-    exit 1
+    kill -SIGTERM 1
+    exit
 else 
     echo " yes"
 fi
